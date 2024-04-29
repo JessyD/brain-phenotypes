@@ -33,7 +33,7 @@ def parse_args():
     parser.add_argument("--regress_out_covariates", action='store_true',
             help="Specify if covariates should be regressed out")
     parser.add_argument("--dataset", help="which dataset to use", choices=["HCP",
-        "PNC"])
+        "PNC", "HBN"])
 
     args = parser.parse_args()
     return args
@@ -84,6 +84,8 @@ def main(random_seed, args):
         color = 'b'
     elif args.dataset == 'HCP':
         color = 'g'
+    elif args.dataset == 'HBN':
+        color = 'darkorchid'
     cum_sum = np.cumsum(explained_variance_ratio_split1)
     plot_total_explained_variance(output_figure,
             explained_variance_ratio_split1, cum_sum, color)
