@@ -197,6 +197,34 @@ def plot_covariates_heatmap(df_beta_coeffs_hcp, labels_hcp,
 
     plt.close()
 
+    # Now plot HBN results alone
+    #fig, ax = plt.subplots(figsize=figsize)
+    fig, (cax, ax) = plt.subplots(nrows=2, ncols=1, figsize=figsize,
+                                  gridspec_kw={"height_ratios": [0.025, 1]})
+
+    # The main difference is that for HBN we do not define a max range
+    im = sns.heatmap(df_beta_coeffs_hbn, cmap='bwr',
+                annot=labels_hbn if annotate else False,
+                ax=ax,
+                cbar_ax=cax,
+                cbar_kws={'orientation': 'horizontal'},
+                vmin=-1.6, # values were set based on maximum scores
+                vmax=1.6,
+                fmt='',
+                cbar=True,
+                )
+    #cbar_ax = fig.add_axes([0.15, 0.05, 0.7, 0.02])
+    #cbar = fig.colorbar(im, cax=cax, orientation="horizontal",
+    #        ticks=[-1.6, 0, 1.6])
+    #cbar.ax.set_xticklabels(['-1.6', '0', '1.6'])  # vertically oriented colorbar
+    #cax.text(-2.5, 0.1, fig_label[2], size=45, weight='bold')
+    for tick in ax.get_xticklabels():
+                tick.set_rotation(90)
+
+    plt.tight_layout()
+    plt.savefig(out_path / f'beta_coeffs_heatmap_HBN.pdf')
+
+
 def main(figs_dir_hcp, figs_dir_pnc, figs_dir_hbn):
 
     # where to save the output figure
