@@ -1,0 +1,14 @@
+dataset: "PNC"
+brainblocks:
+    bbversion: "0.1.0"
+    task: "rest"
+prediction:
+    data_normalisation: "zscored-column"
+    latent_images: False
+    latent_images_type: None
+    latent_targets: False
+    latent_targets_type: None
+    data_type: "numeric"
+plot:
+    color_sns: "light:b"
+    color_mat: "b"
