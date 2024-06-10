@@ -24,11 +24,10 @@ modeling in the realm of neuroimaging research.
 ## Citation
 If you find this code useful, please cite the following paper:
 ```
-@article{Dafflon-224Reliability,
+@article{dafflon2024reliability,
   title={Reliability and predictability of phenotype information from functional connectivity in large imaging datasets},
-  author={Dafflon, Jessica and Moraczewski, Dustin and Earl, Eric and Nielson, Dylan M. and Loewinger, Gabriel and McClure, Patrick and Thomas, Adam G. and Pereira, Francisco},
-  journal={bioRxiv},
-  year={2024},
-  publisher={Cold Spring Harbor Laboratory}
+  author={Dafflon, Jessica and Moraczewski, Dustin and Earl, Eric and Nielson, Dylan M and Loewinger, Gabriel and McClure, Patrick and Thomas, Adam G and Pereira, Francisco},
+  journal={arXiv preprint arXiv:2405.00255},
+  year={2024}
 }
 ```
