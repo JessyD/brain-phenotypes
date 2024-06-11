@@ -1,4 +1,4 @@
-dataset: "HCP"
+dataset: "HBN"
 brainblocks:
     bbversion: "0.1.0"
     task: "rest"
@@ -10,5 +10,6 @@ prediction:
     latent_targets_type: "SVD"
     data_type: "numeric"
 plot:
-    color_sns: "light:g"
-    color_mat: "g"
+    color_sns: "darkorchid"
+    color_mat: "darkorchid"
+

@@ -79,7 +79,7 @@ def main(random_seed, args):
         explained_variance_ratio_split1, n_component_split1 = compute_svd(full_phenotype, pov=1)
 
     # plot the total explained variance
-    output_figure = figs_dir / 'total_var_explained.pdf'
+    output_figure = figs_dir / 'total_var_explained.png'
     if args.dataset == 'PNC':
         color = 'b'
     elif args.dataset == 'HCP':

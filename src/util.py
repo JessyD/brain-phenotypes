@@ -7,7 +7,7 @@ from sklearn.utils.extmath import stable_cumsum
 from sklearn.utils.extmath import svd_flip
 from sklearn.metrics import r2_score
 import matplotlib.pyplot as plt
-
+import matplotlib as mpl
 
 
 def corr(x,y):
@@ -79,27 +79,36 @@ def compute_svd(dataTrainingZ, pov=0.95, verbose=None):
 
 
 def plot_total_explained_variance(output_figure, exp_var, cum_sum, color):
+    plt.figure(figsize=(4, 2))
     plt.bar(range(0,len(exp_var)), exp_var, alpha=0.5, align='center',
-            label='Individual explained variance', color=color)
+            color=color)
     plt.step(range(0,len(cum_sum)), cum_sum, where='mid',
-            label='Cumulative explained variance', color=color)
+            label='Cumulative', color=color)
 
     # add line with the total amount of variance explained
     idx_var = np.argwhere(cum_sum >= 0.95)
     plt.axvline(x=idx_var[0], color='k', linestyle='--')
-    plt.ylabel('Explained variance ratio')
+    plt.ylabel('Explained variance')
     plt.xlabel('Singular Value index')
-    plt.legend(loc='best', frameon=False)
+    plt.legend(loc='upper left', frameon=False)
+    if color == 'g':
+        plt.title('HCP')
+    elif color == 'b':
+        plt.title('PNC')
+    elif color == 'darkorchid':
+        plt.title('HBN')
     plt.tight_layout()
     # only add number from the HCP plot, as from PNC plot it can easily be inferred
     if color == 'g': # HCP
         ticks = [x for x in range(0, len(cum_sum), 20)]
         ticks.append(idx_var[0][0])
         plt.xticks(sorted(ticks))
-    plt.text(idx_var[0], -.5, f'{idx_var[0]}',
-                ha='center', va='top')
+    #plt.text(idx_var[0], -.5, f'{idx_var[0]}',
+    #            ha='center', va='top')
     plt.grid(True,  alpha=0.5, linestyle="--")
-    plt.savefig(output_figure)
+
+    plt.savefig(output_figure, dpi=300)
+
     plt.close()
 
 def get_phenotypes(phenotype_path, data_type):
